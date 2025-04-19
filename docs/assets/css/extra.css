@@ -1,0 +1,4 @@
+/* src/assets/css/extra.css */
+.md-nav__title {
+    display: none !important;
+}
