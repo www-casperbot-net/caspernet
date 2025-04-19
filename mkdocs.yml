@@ -1,0 +1,32 @@
+site_name: "casperbot.net"
+site_url: https://www.casperbot.net
+repo_name: caspernet
+
+nav:
+  - Home: index.md
+  - Add to Discord: add-discord.md
+  - Wiki:
+      - Overview: wiki/overview.md
+  - Contact: contact.md
+
+docs_dir: src
+site_dir: docs
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: teal
+
+  # ← THIS block must be directly under `theme:`
+  extra_css:
+    - assets/css/extra.css
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
