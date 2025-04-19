@@ -1,3 +1,5 @@
+# mkdocs.yml
+
 site_name: casperbot.net
 site_url: https://www.casperbot.net
 repo_name: caspernet
@@ -13,15 +15,24 @@ nav:
 docs_dir: src
 site_dir: docs
 
-# ← HERE, at the top level:
+# Your custom CSS file (relative to src/)
 extra_css:
   - assets/css/extra.css
 
 theme:
   name: material
+
+  # Color palette
   palette:
     primary: indigo
     accent: teal
+
+  # Always show all sidebar sections expanded
+  features:
+    - navigation.sections
+    - navigation.expand
+
+  # Fonts
   font:
     text: Roboto
     code: Roboto Mono
