@@ -1,37 +1,37 @@
 # .github/workflows/deploy-docs.yml
-name: Deploy docs/ → gh-pages
+name: Deploy docs → gh-pages
+
+# 1) Give write access to contents so that GITHUB_TOKEN can push
+permissions:
+  contents: write
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'docs/**'        # run when docs/ changes
-      # (you can add mkdocs.yml here if you like,
-      #  but since you build locally you just need docs/)
+    # optional: only run when docs/ actually changes
+    # paths:
+    #   - 'docs/**'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Checkout both main and gh-pages history
-      - name: Checkout repo
+      # 2) Checkout with persisted credentials
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           persist-credentials: true
 
-      # 2) Push the contents of docs/ into the root of gh-pages
+      # 3) Push docs/ → root of gh-pages
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # Branch to push to
           publish_branch: gh-pages
-          # Folder on main to copy from
           publish_dir: docs
-          # Token for pushing back
+          # this token now has write-permissions
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # (optional) commit author info
           user_name: github-actions
           user_email: github-actions[bot]@users.noreply.github.com
