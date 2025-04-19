@@ -4,7 +4,8 @@ Welcome to the Deep Dive section of the CasperBot documentation! Here we’ll co
 
 - Advanced configuration options  
 - Internal architecture  
-- Performance tips  
+- Performance tips
+- New Line
 
 ## Advanced Configuration
 

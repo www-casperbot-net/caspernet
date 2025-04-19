@@ -1,4 +1,3 @@
-# .github/workflows/build‑docs.yml
 name: Build & Publish Docs
 
 on:
@@ -12,25 +11,47 @@ on:
 jobs:
   build-and-commit:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: true   # so we can push back
+          persist-credentials: true
           fetch-depth: 0
+
+      # DEBUG: Show what we actually pushed
+      - name: Debug: List repo content
+        run: |
+          echo "=== HERE’S WHAT WE HAVE ON main ==="
+          tree -a -L 3 .
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Install MkDocs & Material theme
+      - name: Install MkDocs & Material
         run: |
           python -m pip install --upgrade pip
           pip install mkdocs-material
 
+      # DEBUG: Show mkdocs.yml and your new markdown
+      - name: Debug: Show mkdocs.yml & src/wiki
+        run: |
+          echo "--- mkdocs.yml ---"
+          cat mkdocs.yml
+          echo ""
+          echo "--- src/wiki directory ---"
+          ls -R src/wiki
+
       - name: Build site
         run: mkdocs build --clean   # outputs into docs/
+
+      # DEBUG: Show what ended up in docs/ after build
+      - name: Debug: Show built docs/
+        run: |
+          echo "--- docs/ folder now contains ---"
+          ls -R docs
 
       - name: Commit & Push updated docs/
         uses: EndBug/add-and-commit@v7
@@ -39,3 +60,4 @@ jobs:
           author_email: github-actions[bot]@users.noreply.github.com
           message: "chore: rebuild docs from src"
           add: 'docs/**'
+          fail_on_no_changes: false    # ← do not fail if nothing changed
