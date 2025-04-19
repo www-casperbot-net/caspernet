@@ -10,6 +10,7 @@ nav:
   - Wiki:
       - Overview: wiki/overview.md
       - Deep Dive: wiki/deep-dive.md
+      - Commands: wiki/commands.md
   - Contact: contact.md
 
 docs_dir: src
