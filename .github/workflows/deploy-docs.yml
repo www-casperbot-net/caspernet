@@ -1,0 +1,37 @@
+# .github/workflows/deploy-docs.yml
+name: Deploy docs/ → gh-pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'        # run when docs/ changes
+      # (you can add mkdocs.yml here if you like,
+      #  but since you build locally you just need docs/)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Checkout both main and gh-pages history
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      # 2) Push the contents of docs/ into the root of gh-pages
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # Branch to push to
+          publish_branch: gh-pages
+          # Folder on main to copy from
+          publish_dir: docs
+          # Token for pushing back
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # (optional) commit author info
+          user_name: github-actions
+          user_email: github-actions[bot]@users.noreply.github.com
