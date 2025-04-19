@@ -1,36 +1,41 @@
-name: Deploy MkDocs
+# .github/workflows/build‑docs.yml
+name: Build & Publish Docs
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'mkdocs.yml'
 
 jobs:
-  build-deploy:
+  build-and-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0      # full history for gh-pages action
+          persist-credentials: true   # so we can push back
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: Install MkDocs & Material theme
         run: |
-          python -m venv .venv
-          source .venv/bin/activate
-          pip install mkdocs mkdocs-material
+          python -m pip install --upgrade pip
+          pip install mkdocs-material
 
       - name: Build site
-        run: mkdocs build --clean
+        run: mkdocs build --clean   # outputs into docs/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Commit & Push updated docs/
+        uses: EndBug/add-and-commit@v7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./site
-          # automatically create/keep CNAME for custom domain
-          cname: www.casperbot.net
+          author_name: github-actions
+          author_email: github-actions[bot]@users.noreply.github.com
+          message: "chore: rebuild docs from src"
+          add: 'docs/**'
