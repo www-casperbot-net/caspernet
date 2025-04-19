@@ -1,10 +1,4 @@
-/* Hide the site title in the primary sidebar nav */
-.md-nav__title,
-.md-header-nav__title {
-    display: none !important;
-}
-
-/* Fallback in case your version still names it differently */
-label.md-nav__title[for="__drawer"] {
+/* src/assets/css/extra.css */
+.md-nav__title {
     display: none !important;
 }

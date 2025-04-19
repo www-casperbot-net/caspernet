@@ -1,4 +1,4 @@
-site_name: "casperbot.net"
+site_name: casperbot.net
 site_url: https://www.casperbot.net
 repo_name: caspernet
 
@@ -12,16 +12,15 @@ nav:
 docs_dir: src
 site_dir: docs
 
+# ← HERE, at the top level:
+extra_css:
+  - assets/css/extra.css
+
 theme:
   name: material
   palette:
     primary: indigo
     accent: teal
-
-  # ← THIS block must be directly under `theme:`
-  extra_css:
-    - assets/css/extra.css
-
   font:
     text: Roboto
     code: Roboto Mono
