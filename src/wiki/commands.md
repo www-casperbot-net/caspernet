@@ -1,9 +1,7 @@
 # Commands
 
-A list of all CasperBot commands, their usage, and options.
+List of available commands:
 
-## ping
-
-Check if CasperBot is alive.
-
-Usage:
+- `!ping` – health check  
+- `!help` – show help menu  
+- `!roll` – roll a die (e.g. `1d20`)

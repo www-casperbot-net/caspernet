@@ -1,3 +1,3 @@
-# Wiki Overview
+# Overview
 
-This is the start of the CasperBot wiki…
+This is the overview of the CasperBot wiki.
