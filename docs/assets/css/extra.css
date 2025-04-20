@@ -1,13 +1,30 @@
 /* extra.css */
 
-/* 1) Apply a modern gradient to the hero background */
+/* 1) Set a tall gradient background for the hero */
 .md-hero {
+    height: 500px !important;
     background: linear-gradient(135deg,
             #667eea 0%,
             #764ba2 100%) !important;
 }
 
-/* 2) Tweak overlay opacity if you like */
+/* 2) Center the inner hero content (logo + h1) */
+.md-hero .md-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* 3) Style the logo inside the hero */
+.hero-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* 4) Tweak overlay darkness if desired */
 .md-hero__overlay {
-    background-color: rgba(0, 0, 0, 0.3) !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
 }
