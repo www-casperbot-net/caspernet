@@ -1,4 +1,13 @@
-/* src/assets/css/extra.css */
-.md-nav__title {
-    display: none !important;
+/* extra.css */
+
+/* 1) Apply a modern gradient to the hero background */
+.md-hero {
+    background: linear-gradient(135deg,
+            #667eea 0%,
+            #764ba2 100%) !important;
+}
+
+/* 2) Tweak overlay opacity if you like */
+.md-hero__overlay {
+    background-color: rgba(0, 0, 0, 0.3) !important;
 }
