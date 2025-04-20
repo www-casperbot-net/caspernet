@@ -1,12 +1,9 @@
 # mkdocs.yml
 
-site_name: casperbot.net
+site_name: CasperBot
 site_url: https://www.casperbot.net
 repo_name: caspernet
 
-# ─────────────────────────────────────────────────
-# NAVIGATION (now turned into top‑of‑page TABS)
-# ─────────────────────────────────────────────────
 nav:
   - Home: index.md
   - Wiki:
@@ -22,33 +19,22 @@ site_dir: docs
 theme:
   name: material
 
-  # ─────────────────────────────────────────────────
-  # FEATURES
-  # ─────────────────────────────────────────────────
   features:
-    - navigation.tabs       # turn the nav keys into horizontal tabs
-    - navigation.sections   # group by folder (enables dropdown)
-    - navigation.expand     # never auto‑collapse your Wiki dropdown
+    - navigation.tabs       # horizontal tabs at top (Wiki becomes a dropdown)
+    # no navigation.sections/expand needed for a pure tab dropdown
 
-  # ─────────────────────────────────────────────────
-  # COLOR PALETTE (used for buttons, links, etc.)
-  # ─────────────────────────────────────────────────
   palette:
     primary: indigo
     accent: teal
 
-  # ─────────────────────────────────────────────────
-  # FONTS
-  # ─────────────────────────────────────────────────
   font:
     text: Roboto
     code: Roboto Mono
 
-# Pull in our custom CSS to override hero background
+# our custom CSS to size & style the hero
 extra_css:
   - assets/css/extra.css
 
-# Any Markdown extensions you like
 markdown_extensions:
   - admonition
   - toc:
